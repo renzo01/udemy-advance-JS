@@ -1,23 +1,33 @@
 
-//Object.create()
-
-// const elfFunctions = {
-//     attack(){
-//         return 'attack with '+this.weapon;
-//     }
-// }
-
-function Elf(name, weapon){
-    this.name = name;
-    this.weapon = weapon;
+class Character {
+    constructor(name, weapon) {
+        this.name = name;
+        this.weapon = weapon;
+    }
+    attack(){
+        return 'attack with '+this.weapon;
+    }
+    
 }
 
-Elf.prototype.attack = function(){
-    return 'attack with '+ this.weapon;
+class Elf extends Character{
+    constructor(name, weapon, type){
+        super(name,weapon);
+        this.type = type;
+    }
+}
+class Ogre extends Character{
+    constructor(name, weapon, color){
+        super(name,weapon);
+        this.color = color;
+    }
+    makeFort(){
+        return 'strongest fort in the world';
+    }
 }
 
-const peter = new Elf('peter','stones');
-console.log(peter.attack());
+const dolby = new Elf('Dolby', 'cloth', 'house');
+console.log(dolby.attack());
 
-// const sam = createElf('sam','firestorm');
-// console.log(sam.attack());
+const shrek = new Ogre('Shrek','club', 'greem');
+console.log(shrek.makeFort());
